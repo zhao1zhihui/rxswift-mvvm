@@ -9,9 +9,8 @@ import UIKit
 import RxSwift
 
 class FollowerCell: BaseTableViewCell,TableRowCell {
-    
-    typealias Item = FollowerItem
     var item: FollowerItem?
+    typealias Item = FollowerItem
     
     let bt = UIButton(type: .custom)
     let sw = UISwitch()
@@ -95,6 +94,9 @@ class FollowerCell: BaseTableViewCell,TableRowCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    deinit{
+        print("deinit")
     }
 
 }

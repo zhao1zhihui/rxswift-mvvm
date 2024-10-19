@@ -17,4 +17,7 @@ class FollowerItem: NSObject, TableRowModel {
     func render(in cell: FollowerCell) {
         cell.setup(with: self)
     }
+    deinit{
+        print("deinit")
+    }
 }

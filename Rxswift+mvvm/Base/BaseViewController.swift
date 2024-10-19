@@ -85,9 +85,9 @@ class BaseViewController: UIViewController {
         
         // 忽略第一个值因为他是没有绑定流为0 翻出false错误信号
         viewModel?.loading.skip(1).asObservable()
-            .subscribe(onNext: { Lodinng in
+            .subscribe(onNext: { [weak self] (Lodinng) in
                 print("\(Lodinng)")
-                self.isLoading.accept(Lodinng)
+                self?.isLoading.accept(Lodinng)
             }).disposed(by: rx.disposeBag)
         viewModel?.error.asObservable().bind(to: error).disposed(by: rx.disposeBag)
         viewModel?.resultError.asObservable().bind(to: resultError).disposed(by: rx.disposeBag)
@@ -101,9 +101,10 @@ class BaseViewController: UIViewController {
             self?.view.makeToast(error.localizedDescription, title: "提示", image: UIImage(systemName: "exclamationmark.triangle"))
         }).disposed(by: rx.disposeBag)
         
-//        isLoading.subscribe(onNext: { isLoading in
-//            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
-//        }).disposed(by: rx.disposeBag)
+        isLoading.skip(1).subscribe(onNext: { isLoading in
+            print("++++++")
+            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+        }).disposed(by: rx.disposeBag)
     }
 
 }
