@@ -14,6 +14,8 @@ import NSObject_Rx
 
 class FollowerListVM :ViewModel, ViewModelType {
     
+    
+    
     let itembT: PublishSubject<FollowerItem> = PublishSubject<FollowerItem>()
     var text: String = ""
     
