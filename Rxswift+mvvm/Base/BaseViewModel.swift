@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Moya
 
 protocol ViewModelType {
     associatedtype Input
@@ -21,4 +22,6 @@ class ViewModel :NSObject {
     let footerLoading: ActivityIndicator = ActivityIndicator()
     let error: ErrorTracker = ErrorTracker()
     let resultError:PublishSubject<Error> = PublishSubject<Error>()
+    
+    let tongyiresultError:ResultErrorTracker = ResultErrorTracker()
 }

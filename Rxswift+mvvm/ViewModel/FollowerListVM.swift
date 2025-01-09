@@ -69,7 +69,7 @@ class FollowerListVM :ViewModel, ViewModelType {
             guard let self = self else { return Observable.just(.success([]))}
             self.page = self.page + 1
             return self.requestresult(text:self.text, page:self.page)
-                .trackActivity(self.footerLoading).resultErrorTracker(resultError1)
+                .trackActivity(self.footerLoading).resultErrorTracker(tongyiresultError)
        })
         .subscribe { result in
         switch result{
@@ -92,7 +92,7 @@ class FollowerListVM :ViewModel, ViewModelType {
             guard let self = self else { return Observable.just(.success([]))}
             self.text = test
             self.page = 1
-            return self.requestresult(text:test, page:self.page).trackActivity(self.loading).resultErrorTracker(resultError1)
+            return self.requestresult(text:test, page:self.page).trackActivity(self.loading).resultErrorTracker(tongyiresultError)
                 })
              .subscribe {[weak self](result) in
                 switch result{
